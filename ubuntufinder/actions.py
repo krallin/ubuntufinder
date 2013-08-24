@@ -16,6 +16,29 @@ CLOUD_IMAGES_RELEASES_FILE = "released.latest.txt"
 LATEST = "latest"  # Code to search for the latest release
 
 
+def _find_latest_release(_session=None):
+    """
+    :returns: The latest stable (non-devel) Ubuntu release
+    :rtype: str
+    """
+    session = _session or requests.Session()
+
+
+    url = "/".join([CLOUD_IMAGES_SERVER, CLOUD_IMAGES_RELEASES_FILE])
+    res = session.get(url) #TODO: If error!
+    reader = csv.reader(StringIO.StringIO(res.text), delimiter="\t")
+
+    latest_release = None
+    for release, platform, status, date in reader:
+        if status == "release":
+            latest_release = release
+
+    if latest_release is None:
+        raise ReleaseNotFound()
+
+    return latest_release
+
+
 def _list_images(release, _session=None):
     """
     :rtype: list of ubuntufinder.models.Image
@@ -40,29 +63,6 @@ def _find_image(region, release, architecture, instance_type, virtualization, _s
             return image
 
     raise ImageNotFound()
-
-
-def _find_latest_release(_session=None):
-    """
-    :returns: The latest stable (non-devel) Ubuntu release
-    :rtype: str
-    """
-    session = _session or requests.Session()
-
-
-    url = "/".join([CLOUD_IMAGES_SERVER, CLOUD_IMAGES_RELEASES_FILE])
-    res = session.get(url) #TODO: If error!
-    reader = csv.reader(StringIO.StringIO(res.text), delimiter="\t")
-
-    latest_release = None
-    for release, platform, status, date in reader:
-        if status == "release":
-            latest_release = release
-
-    if latest_release is None:
-        raise ReleaseNotFound()
-
-    return latest_release
 
 
 def find_image(region, release=LATEST, architecture="amd64", instance_type="ebs", virtualization="paravirtual",
