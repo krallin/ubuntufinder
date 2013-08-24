@@ -1,0 +1,35 @@
+raring	server	release	20130824	ebs	amd64	ap-northeast-1	ami-d5099ad4	aki-44992845		paravirtual
+raring	server	release	20130824	ebs	i386	ap-northeast-1	ami-d3099ad2	aki-42992843		paravirtual
+raring	server	release	20130824	instance-store	amd64	ap-northeast-1	ami-97099a96	aki-44992845		paravirtual
+raring	server	release	20130824	instance-store	i386	ap-northeast-1	ami-29099a28	aki-42992843		paravirtual
+raring	server	release	20130824	ebs	amd64	ap-southeast-1	ami-6af5bd38	aki-fe1354ac		paravirtual
+raring	server	release	20130824	ebs	i386	ap-southeast-1	ami-64f5bd36	aki-f81354aa		paravirtual
+raring	server	release	20130824	instance-store	amd64	ap-southeast-1	ami-4af5bd18	aki-fe1354ac		paravirtual
+raring	server	release	20130824	instance-store	i386	ap-southeast-1	ami-ecf4bcbe	aki-f81354aa		paravirtual
+raring	server	release	20130824	ebs	amd64	ap-southeast-2	ami-8332a0b9	aki-31990e0b		paravirtual
+raring	server	release	20130824	ebs	i386	ap-southeast-2	ami-8d32a0b7	aki-33990e09		paravirtual
+raring	server	release	20130824	instance-store	amd64	ap-southeast-2	ami-8f32a0b5	aki-31990e0b		paravirtual
+raring	server	release	20130824	instance-store	i386	ap-southeast-2	ami-b132a08b	aki-33990e09		paravirtual
+raring	server	release	20130824	ebs	amd64	eu-west-1	ami-cbd4cfbf			hvm
+raring	server	release	20130824	ebs	amd64	eu-west-1	ami-c9d4cfbd	aki-71665e05		paravirtual
+raring	server	release	20130824	ebs	i386	eu-west-1	ami-cfd4cfbb	aki-75665e01		paravirtual
+raring	server	release	20130824	instance-store	amd64	eu-west-1	ami-6fd4cf1b	aki-71665e05		paravirtual
+raring	server	release	20130824	instance-store	i386	eu-west-1	ami-edd5ce99	aki-75665e01		paravirtual
+raring	server	release	20130824	ebs	amd64	sa-east-1	ami-752b8f68	aki-c48f51d9		paravirtual
+raring	server	release	20130824	ebs	i386	sa-east-1	ami-7b2b8f66	aki-ca8f51d7		paravirtual
+raring	server	release	20130824	instance-store	amd64	sa-east-1	ami-4b2b8f56	aki-c48f51d9		paravirtual
+raring	server	release	20130824	instance-store	i386	sa-east-1	ami-2f2b8f32	aki-ca8f51d7		paravirtual
+raring	server	release	20130824	ebs	amd64	us-east-1	ami-7f317316			hvm
+raring	server	release	20130824	ebs	amd64	us-east-1	ami-7d317314	aki-88aa75e1		paravirtual
+raring	server	release	20130824	ebs	i386	us-east-1	ami-7b317312	aki-b6aa75df		paravirtual
+raring	server	release	20130824	instance-store	amd64	us-east-1	ami-a73371ce	aki-88aa75e1		paravirtual
+raring	server	release	20130824	instance-store	i386	us-east-1	ami-252d6f4c	aki-b6aa75df		paravirtual
+raring	server	release	20130824	ebs	amd64	us-west-1	ami-bc052ff9	aki-f77e26b2		paravirtual
+raring	server	release	20130824	ebs	i386	us-west-1	ami-b2052ff7	aki-f57e26b0		paravirtual
+raring	server	release	20130824	instance-store	amd64	us-west-1	ami-fe052fbb	aki-f77e26b2		paravirtual
+raring	server	release	20130824	instance-store	i386	us-west-1	ami-7c052f39	aki-f57e26b0		paravirtual
+raring	server	release	20130824	ebs	amd64	us-west-2	ami-8cde42bc			hvm
+raring	server	release	20130824	ebs	amd64	us-west-2	ami-8ade42ba	aki-fc37bacc		paravirtual
+raring	server	release	20130824	ebs	i386	us-west-2	ami-88de42b8	aki-fa37baca		paravirtual
+raring	server	release	20130824	instance-store	amd64	us-west-2	ami-4ade427a	aki-fc37bacc		paravirtual
+raring	server	release	20130824	instance-store	i386	us-west-2	ami-9022bfa0	aki-fa37baca		paravirtual

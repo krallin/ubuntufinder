@@ -5,7 +5,7 @@ import StringIO
 
 import requests
 
-from ubuntufinder.exceptions import ImageNotFound
+from ubuntufinder.exceptions import ImageNotFound, ReleaseNotFound
 from ubuntufinder.models import SearchImage, Image
 
 
@@ -16,37 +16,42 @@ CLOUD_IMAGES_RELEASES_FILE = "released.latest.txt"
 LATEST = "latest"  # Code to search for the latest release
 
 
-def _list_images(release):
+def _list_images(release, _session=None):
     """
     :rtype: list of ubuntufinder.models.Image
     """
+    session = _session or requests.Session()
+
     url = "/".join([CLOUD_IMAGES_SERVER, release, "server", CLOUD_IMAGES_LIST_FILE])
-    res = requests.get(url)
+    res = session.get(url) #TODO: If error!
     reader = csv.reader(StringIO.StringIO(res.text), delimiter="\t")
 
     return [Image(*entry) for entry in reader]
 
 
-def _find_image(region, release, architecture, instance_type, virtualization):
+def _find_image(region, release, architecture, instance_type, virtualization, _session=None):
     """
     :rtype: ubuntufinder.models.Image
     """
     search_image = SearchImage(release, "server", instance_type, architecture, region, virtualization)
 
-    for image in _list_images(release):
+    for image in _list_images(release, _session):
         if search_image.matches(image):
             return image
 
     raise ImageNotFound()
 
 
-def _find_latest_release():
+def _find_latest_release(_session=None):
     """
     :returns: The latest stable (non-devel) Ubuntu release
     :rtype: str
     """
+    session = _session or requests.Session()
+
+
     url = "/".join([CLOUD_IMAGES_SERVER, CLOUD_IMAGES_RELEASES_FILE])
-    res = requests.get(url)
+    res = session.get(url) #TODO: If error!
     reader = csv.reader(StringIO.StringIO(res.text), delimiter="\t")
 
     latest_release = None
@@ -54,12 +59,14 @@ def _find_latest_release():
         if status == "release":
             latest_release = release
 
-    assert latest_release is not None, "Could not identiy latest release"  #TODO: Fixme.
+    if latest_release is None:
+        raise ReleaseNotFound()
 
     return latest_release
 
 
-def find_image(region, release=LATEST, architecture="amd64", instance_type="ebs", virtualization="paravirtual"):
+def find_image(region, release=LATEST, architecture="amd64", instance_type="ebs", virtualization="paravirtual",
+               _session=None):
     """
     Return a full image specification according to the query parameters
 
@@ -79,6 +86,6 @@ def find_image(region, release=LATEST, architecture="amd64", instance_type="ebs"
     :type virtualization: str
     """
     if release == LATEST:
-        release = _find_latest_release()
+        release = _find_latest_release(_session)
 
-    return _find_image(region, release, architecture, instance_type, virtualization)
+    return _find_image(region, release, architecture, instance_type, virtualization, _session)
