@@ -3,7 +3,7 @@
 
 __author__ = 'Thomas Orozco'
 __email__ = 'thomas@orozco.fr'
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 
 
 from ubuntufinder.actions import find_image

@@ -19,7 +19,7 @@ history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 setup(
     name='ubuntufinder',
-    version='0.1.0',
+    version='0.2.0',
     description='An utility package to locate the latest Ubuntu AMIs.',
     long_description=readme + '\n\n' + history,
     author='Thomas Orozco',
