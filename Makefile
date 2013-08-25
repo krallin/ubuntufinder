@@ -39,8 +39,8 @@ coverage:
 	open htmlcov/index.html
 
 docs:
-	rm docs/ubuntufinder.rst
-	rm docs/modules.rst
+	rm -f docs/ubuntufinder.rst
+	rm -f docs/modules.rst
 	sphinx-apidoc -o docs/ ubuntufinder
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
