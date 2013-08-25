@@ -16,10 +16,11 @@ if sys.argv[-1] == 'publish':
 
 readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
+execfile('ubuntufinder/version.py') # Load version
 
 setup(
     name='ubuntufinder',
-    version='0.2.0',
+    version=__version__,
     description='An utility package to locate the latest Ubuntu AMIs.',
     long_description=readme + '\n\n' + history,
     author='Thomas Orozco',
