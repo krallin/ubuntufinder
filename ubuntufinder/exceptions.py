@@ -9,3 +9,8 @@ class ReleaseNotFound(Exception):
     """
     Raised when the latest Release could not be identified.
     """
+
+class ServiceUnavailable(Exception):
+    """
+    Raised when the Ubuntu Cloud Images service is not available
+    """

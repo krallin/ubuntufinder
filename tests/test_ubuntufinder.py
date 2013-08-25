@@ -2,9 +2,10 @@
 # -*- coding: utf-8 -*-
 import os
 import unittest
+import requests
 
 from ubuntufinder.actions import _find_latest_release, _list_images, _find_image, find_image
-from ubuntufinder.exceptions import ReleaseNotFound
+from ubuntufinder.exceptions import ReleaseNotFound, ServiceUnavailable
 
 
 class MockSession(object):
@@ -14,7 +15,6 @@ class MockSession(object):
 class MockResponse(object):
     def __init__(self, text):
         self.text = text
-
 
 
 class FindLatestReleaseTestCase(unittest.TestCase):
@@ -65,7 +65,7 @@ class ListImagesTestCase(unittest.TestCase):
 
     def test_find_image(self):
         self.assertEqual("ami-cfd4cfbb", _find_image("eu-west-1", "raring", "i386", "ebs", "paravirtual",
-                                                     MockSession(lambda url: MockResponse(self.data)) ).ami_id)
+                                                     MockSession(lambda url: MockResponse(self.data))).ami_id)
 
     def test_find_latest_image(self):
         def get(url):
@@ -76,6 +76,14 @@ class ListImagesTestCase(unittest.TestCase):
                     return MockResponse(f.read())
 
         self.assertEqual("ami-7d317314", find_image("us-east-1", _session=MockSession(get)).ami_id)
+
+
+class ServiceUnavailableTestCase(unittest.TestCase):
+    def test_service_unavailable(self):
+        def get(url):
+            raise requests.RequestException()
+
+        self.assertRaises(ServiceUnavailable, find_image, "us-east-1", _session=MockSession(get))
 
 
 if __name__ == '__main__':
