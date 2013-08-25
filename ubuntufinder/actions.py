@@ -71,19 +71,24 @@ def find_image(region, release=LATEST, architecture="amd64", instance_type="ebs"
     Return a full image specification according to the query parameters
 
     :param region: The AWS region code to locate the Image in
-    :type region: str
+    :type region: :class:`str`
 
     :param release: The codename of the Ubuntu Release to locate. Defaults to the latest release
-    :type release: str
+    :type release: :class:`str`
 
     :param architecture: The CPU Architecture to find the image for. Defaults to amd64
-    :type architecture: str
+    :type architecture: :class:`str`
 
     :param instance_type: The Instance type to find the image for (ebs or instance-store). Defaults to ebs.
-    :type instance_type: str
+    :type instance_type: :class:`str`
 
     :param virtualization: The virtualization technology to find the image for (paravirtual or hvm).
-    :type virtualization: str
+    :type virtualization: :class:`str`
+
+    :returns: An Image corresponding to your search
+    :rtype: :class:`ubuntufinder.models.Image`
+
+    :raises: :class:`ubuntufinder.exceptions.ImageNotFound` is raised if no match is found.
     """
     if release == LATEST:
         release = _find_latest_release(_session)

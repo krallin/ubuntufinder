@@ -5,6 +5,13 @@ import datetime
 class BaseImage(object):
     """
     A base image model, as can be searched for.
+
+    :ivar release: The Ubuntu release codename for this Image.
+    :ivar platform: Set to server for Cloud Images.
+    :ivar instance_type: The instance type supported by this Image (ebs or instance-store).
+    :ivar architecture: The architecture for this Image (i386 or amd64)
+    :ivar region: The region for this Image (us-east-1, etc.)
+    :ivar virtualization: The virtualization technology for this Image (paravirtual of hvm)
     """
     def __init__(self, release, platform, instance_type, architecture, region, virtualization):
         self.release = release
@@ -27,6 +34,15 @@ class SearchImage(BaseImage):
     An Image used to search for other images.
     """
     def matches(self, image):
+        """
+        Checks whether an image matches this search image.
+
+        :param image: The Image to compare to the SearchImage
+        :type image: BaseImage
+
+        :returns: Whether the Image matches
+        :rtype: bool
+        """
         for attr in ["release", "platform", "instance_type", "architecture", "region", "virtualization"]:
             if getattr(self, attr) != getattr(image, attr):
                 return False
@@ -36,6 +52,11 @@ class SearchImage(BaseImage):
 class Image(BaseImage):
     """
     An image as presented in CloudImages.
+
+    :ivar date: The date this Image was released
+    :ivar stability: The stability of this Image (release or devel)
+    :ivar ami_id: The AMI ID for this Image
+    :ivar aki_id: The AKI ID for this Image
     """
     def __init__(self, release, platform, stability, date, instance_type, architecture, region, ami_id, aki_id,
                  _, virtualization):

@@ -4,16 +4,15 @@
    contain the root `toctree` directive.
 
 Welcome to Ubuntu AMI Locator's documentation!
-======================================
+==============================================
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
 
-   readme
-   installation
    usage
+   installation
    contributing
    authors
    history

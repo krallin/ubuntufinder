@@ -14,11 +14,6 @@ Ubuntu AMI Locator
 
 An utility package to locate the latest Ubuntu AMIs.
 
+* Quickstart: http://ubuntufinder.readthedocs.org/en/latest/usage.html
+* Documentation: http://ubuntufinder.readthedocs.org.
 * Free software: BSD license
-* Documentation: http://ubuntufinder.rtfd.org.
-
-Features
---------
-
-* List available Images
-* Search for an Image
