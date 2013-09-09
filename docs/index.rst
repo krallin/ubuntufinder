@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Ubuntu AMI Locator's documentation!
+Welcome to Ubuntu Finder's documentation!
 ==============================================
 
 Contents:

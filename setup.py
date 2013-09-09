@@ -30,11 +30,16 @@ setup(
         'ubuntufinder',
     ],
     package_dir={'ubuntufinder': 'ubuntufinder'},
+    entry_points={
+        'console_scripts': [
+            'ubuntufinder = ubuntufinder.cli:main',
+        ]
+    },
     include_package_data=True,
     install_requires=[
-        "requests",
+        'requests',
     ],
-    license="BSD",
+    license='BSD',
     zip_safe=False,
     keywords='ubuntufinder',
     classifiers=[
@@ -42,7 +47,7 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Natural Language :: English',
-        "Programming Language :: Python :: 2",
+        'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
