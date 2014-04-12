@@ -63,7 +63,8 @@ class Image(BaseImage):
 
         super(Image, self).__init__(release, platform, instance_type, architecture, region, virtualization)
 
-        self.date = datetime.datetime.strptime(date, "%Y%m%d")
+        # Sometimes the date has ".1", so we need to remove it.
+        self.date = datetime.datetime.strptime(date.split('.', 1)[0], "%Y%m%d")
         self.stability = stability
         self.ami_id = ami_id
         self.aki_id = aki_id
