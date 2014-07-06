@@ -23,3 +23,5 @@ An utility package to locate the latest Ubuntu AMIs.
     $ pip install --upgrade ubuntufinder
     $ ubuntufinder -r precise -a amd64 -i ebs -v paravirtual us-east-1
     ami-fa7dba92
+
+If you don't have pip, install it: http://pip.readthedocs.org/en/latest/installing.html
