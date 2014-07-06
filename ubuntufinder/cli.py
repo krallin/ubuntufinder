@@ -3,9 +3,10 @@ from __future__ import print_function
 
 import sys
 import argparse
+import traceback
 
 from ubuntufinder.actions import LATEST, find_image
-from ubuntufinder.exceptions import ImageNotFound
+from ubuntufinder.exceptions import ImageNotFound, LatestReleaseNotFound, ServiceUnavailable
 
 
 def main():
@@ -26,12 +27,25 @@ def main():
     else:
         image_type = args.image_type
 
-    # Actual image location
+    # Actual image location and exit logic
     try:
         image = find_image(args.region, args.release, args.architecture, image_type, args.virtualization)
     except ImageNotFound:
+        # 1-10: user error
         print("ERROR: No image found!", file=sys.stderr)
         sys.exit(1)
+    except LatestReleaseNotFound:
+        # 11-20: program error
+        print("ERROR: Latest release could not be identified", file=sys.stderr)
+        sys.exit(11)
+    except ServiceUnavailable:
+        # 21-30: temporary failure
+        print("ERROR: Ununtu cloud images are currently unavailable", file=sys.stderr)
+        sys.exit(21)
+    except:
+        # 31-40: internal error
+        traceback.print_exc(file=sys.stderr)
+        sys.exit(31)
 
     print(image.ami_id)
 

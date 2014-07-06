@@ -5,7 +5,7 @@ import StringIO
 
 import requests
 
-from ubuntufinder.exceptions import ImageNotFound, ReleaseNotFound, ServiceUnavailable
+from ubuntufinder.exceptions import ImageNotFound, LatestReleaseNotFound, ServiceUnavailable
 from ubuntufinder.models import SearchImage, Image
 
 
@@ -48,7 +48,7 @@ def _find_latest_release(_session):
             latest_release = release
 
     if latest_release is None:
-        raise ReleaseNotFound()
+        raise LatestReleaseNotFound()
 
     return latest_release
 

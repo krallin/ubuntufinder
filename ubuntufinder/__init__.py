@@ -8,7 +8,7 @@ from ubuntufinder.version import __version__
 
 from ubuntufinder.actions import find_image
 from ubuntufinder.models import Image
-from ubuntufinder.exceptions import ImageNotFound, ReleaseNotFound
+from ubuntufinder.exceptions import ImageNotFound, LatestReleaseNotFound
 
 
-__all__ = ['find_image', 'Image', 'ImageNotFound', 'ReleaseNotFound']
+__all__ = ['find_image', 'Image', 'ImageNotFound', 'LatestReleaseNotFound']

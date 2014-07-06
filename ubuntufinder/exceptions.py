@@ -5,7 +5,7 @@ class ImageNotFound(Exception):
     Raised when no Image matching the query was found.
     """
 
-class ReleaseNotFound(Exception):
+class LatestReleaseNotFound(Exception):
     """
     Raised when the latest Release could not be identified.
     """

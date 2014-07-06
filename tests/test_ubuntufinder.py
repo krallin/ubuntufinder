@@ -5,7 +5,7 @@ import unittest
 import requests
 
 from ubuntufinder.actions import _find_latest_release, _list_images, _find_image, find_image
-from ubuntufinder.exceptions import ReleaseNotFound, ServiceUnavailable
+from ubuntufinder.exceptions import LatestReleaseNotFound, ServiceUnavailable
 
 
 class MockSession(object):
@@ -26,7 +26,7 @@ class FindLatestReleaseTestCase(unittest.TestCase):
 
     def test_error_condition(self):
         get = lambda url: MockResponse("")
-        self.assertRaises(ReleaseNotFound, _find_latest_release, MockSession(get))
+        self.assertRaises(LatestReleaseNotFound, _find_latest_release, MockSession(get))
 
     def test_finds_latest_release(self):
         with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "releases.txt")) as f:
