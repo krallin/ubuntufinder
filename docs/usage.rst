@@ -22,8 +22,8 @@ CLI Usage
 Run ``ubuntufinder -h`` for usage information.
 
 
-Quickstart
-**********
+Library Usage
+*************
 
 ::
 
