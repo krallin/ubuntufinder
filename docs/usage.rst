@@ -1,8 +1,26 @@
-========
+=====
 Usage
-========
+=====
 
-The main entry point to Ubuntu Finder is :func:`ubuntufinder.find_image`.
+Installation
+************
+
+Use ``pip``:
+
+::
+
+    $ pip install --upgrade ubuntufinder
+
+CLI Usage
+*********
+
+::
+
+    $ ubuntufinder -r precise -a amd64 -i ebs -v paravirtual us-east-1
+    ami-fa7dba92
+
+Run ``ubuntufinder -h`` for usage information.
+
 
 Quickstart
 **********
@@ -12,6 +30,9 @@ Quickstart
     >>> import ubuntufinder
     >>> ubuntufinder.find_image("us-east-1")
     <Image: raring@us-east-1: 2013-08-24 00:00:00 (amd64 ebs paravirtual)>
+    >>> image = ubuntufinder.find_image("us-west-1", "precise", "amd64", "ebs", "paravirtual")
+    >>> image.ami_id
+    'ami-c4072e81'
 
 
 Advanced Usage
