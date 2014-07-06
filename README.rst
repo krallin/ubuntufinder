@@ -15,7 +15,11 @@ Ubuntu AMI Locator
 An utility package to locate the latest Ubuntu AMIs.
 
 * Quickstart: http://ubuntufinder.readthedocs.org/en/latest/usage.html
-* Documentation: http://ubuntufinder.readthedocs.org.
+* Documentation (CLI & library usage): http://ubuntufinder.readthedocs.org.
 * Free software: BSD license
 
-.. include:: ./docs/usage.rst
+::
+
+    $ pip install --upgrade ubuntufinder
+    $ ubuntufinder -r precise -a amd64 -i ebs -v paravirtual us-east-1
+    ami-fa7dba92
