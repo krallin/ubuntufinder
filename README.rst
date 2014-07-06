@@ -4,7 +4,7 @@ Ubuntu AMI Locator
 
 .. image:: https://badge.fury.io/py/ubuntufinder.png
     :target: http://badge.fury.io/py/ubuntufinder
-    
+
 .. image:: https://travis-ci.org/krallin/ubuntufinder.png?branch=master
         :target: https://travis-ci.org/krallin/ubuntufinder
 
@@ -30,3 +30,14 @@ Quickstart
     >>> image = ubuntufinder.find_image("us-west-1", "precise", "amd64", "ebs", "paravirtual")
     >>> image.ami_id
     'ami-c4072e81'
+
+
+CLI Usage
+*********
+
+::
+
+    $ ubuntufinder -r precise -a amd64 -i ebs -v paravirtual us-east-1
+    ami-fa7dba92
+
+Run ``ubuntufinder -h`` for usage information.
