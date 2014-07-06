@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import csv
-import StringIO
+
+try:
+    from StringIO import StringIO
+except ImportError:
+    from io import StringIO
 
 import requests
 
@@ -30,7 +34,7 @@ def _open_csv_from_url(url, _session=None):
         res = session.get(url)
     except requests.RequestException as e:
         raise ServiceUnavailable(e)
-    return csv.reader(StringIO.StringIO(res.text), delimiter=CLOUD_IMAGES_CSV_SEPARATOR)
+    return csv.reader(StringIO(res.text), delimiter=CLOUD_IMAGES_CSV_SEPARATOR)
 
 
 def _find_latest_release(_session):

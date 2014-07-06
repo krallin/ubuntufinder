@@ -16,7 +16,12 @@ if sys.argv[-1] == 'publish':
 
 readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
-execfile('ubuntufinder/version.py') # Load version
+
+# Load version
+version_file = "ubuntufinder/version.py"
+with open(version_file) as f:
+    code = compile(f.read(), version_file, 'exec')
+    exec(code)
 
 setup(
     name='ubuntufinder',
@@ -54,5 +59,5 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
     ],
-    test_suite='tests',
+    test_suite='ubuntufinder.tests',
 )
